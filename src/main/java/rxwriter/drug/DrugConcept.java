@@ -1,8 +1,6 @@
 package rxwriter.drug;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Objects;
 
 public class DrugConcept {
 
@@ -18,10 +16,8 @@ public class DrugConcept {
     }
 
     public boolean isDrugInConcept(DispensableDrug drug) {
-        Objects.requireNonNull(drug, "Drug must not be null for comparison to drug concepts.");
-        HashSet<DrugClassification> drugClassifications = new HashSet<>(Arrays.asList(drug.drugClassifications()));
-        drugClassifications.retainAll(Arrays.asList(drugClassesInConcept));
-        return !drugClassifications.isEmpty();
+        return Arrays.stream(drugClassesInConcept).toList().stream().anyMatch(
+            drugClass -> Arrays.stream(drug.drugClassifications()).toList().contains(drugClass));
     }
 }
 

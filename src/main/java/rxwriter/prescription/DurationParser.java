@@ -10,7 +10,7 @@ public class DurationParser {
      *
      * Returns 0 for strings not parseable to days by this logic.
      *
-     * TODO: Try to rewrite this method using a Java Switch Expression!
+     *
      */
     public static int parseDays(String durationString) {
         String[] parts = durationString.split(" ");
